@@ -3,30 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+  <title>Weather App - Premium</title>
   <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="weather-body clear">
+  <!-- Ob-havo animatsiyalari uchun overlay -->
+  <div class="weather-effects"></div>
 
-  <div class="container">
-    <div class="weather-app">
-      <h1>Weather App</h1>
-
-      <div class="search-box">
-        <input type="text" id="cityInput" placeholder="Shahar nomini kiriting">
-        <button id="searchBtn" type="button">Qidirish</button>
+  <main class="main-container">
+    <!-- Asosiy Weather Card -->
+    <div class="weather-card" id="weatherCard">
+      <!-- Card Header -->
+      <div class="card-header">
+        <h1 class="app-title">
+          <span class="title-icon">☁️</span>
+          Weather App
+        </h1>
+        <p class="app-subtitle">Ob-havo ma'lumotlarini bilib oling</p>
       </div>
 
-      <div class="weather-info">
-        <h2 id="cityName">Shahar nomi</h2>
-        <p id="temperature">Harorat: --°C</p>
-        <p id="description">Holat: --</p>
-        <p id="humidity">Namlik: --%</p>
-        <p id="wind">Shamol: -- km/s</p>
+      <!-- Qidiruv Box -->
+      <div class="search-container">
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="cityInput" 
+            class="search-input" 
+            placeholder="Shahar nomini kiriting..."
+            autocomplete="off"
+            aria-label="Shahar nomi"
+          >
+          <button id="searchBtn" class="search-btn" type="button" aria-label="Qidirish">
+            <span class="btn-icon">🔍</span>
+            <span class="btn-text">Qidirish</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-container" id="loadingContainer" hidden>
+        <div class="loader">
+          <div class="loader-circle"></div>
+          <div class="loader-circle"></div>
+          <div class="loader-circle"></div>
+        </div>
+        <p class="loading-text">Ma'lumotlar yuklanmoqda...</p>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-container" id="errorContainer" hidden>
+        <div class="error-box">
+          <span class="error-icon">⚠️</span>
+          <p class="error-message" id="errorMessage">Xatolik yuz berdi</p>
+          <button class="error-close" id="errorClose" aria-label="Yopish">✕</button>
+        </div>
+      </div>
+
+      <!-- Weather Info -->
+      <div class="weather-info" id="weatherInfo">
+        <div class="weather-main">
+          <!-- Weather Icon -->
+          <div class="weather-icon-container">
+            <div class="weather-icon" id="weatherIcon">☀️</div>
+            <div class="icon-glow"></div>
+          </div>
+
+          <!-- Temperature -->
+          <div class="temperature-container">
+            <span class="temperature" id="temperature">--</span>
+            <span class="temperature-unit">°C</span>
+          </div>
+
+          <!-- Shahar nomi -->
+          <h2 class="city-name" id="cityName">Shahar nomi</h2>
+        </div>
+
+        <!-- Weather Details -->
+        <div class="weather-details">
+          <div class="detail-item">
+            <span class="detail-icon">🌡️</span>
+            <div class="detail-content">
+              <span class="detail-label">Holat</span>
+              <span class="detail-value" id="description">--</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">💧</span>
+            <div class="detail-content">
+              <span class="detail-label">Namlik</span>
+              <span class="detail-value" id="humidity">--%</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">💨</span>
+            <div class="detail-content">
+              <span class="detail-label">Shamol</span>
+              <span class="detail-value" id="wind">-- km/s</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">🌡️</span>
+            <div class="detail-content">
+              <span class="detail-label">His qilish</span>
+              <span class="detail-value" id="feelsLike">--°C</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-<script   src  =  "js/main.js?v=2"  ></script> 
-  <!-- <script src="js/main.js"></script> -->
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>OpenWeatherMap API orqali quvvatlanadi</p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
