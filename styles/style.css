@@ -627,6 +627,37 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* === Local Time === */
+.local-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  display: inline-flex;
+}
+
+.time-icon {
+  font-size: 18px;
+}
+
+.time-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Poppins', monospace;
+}
+
+.date-value {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* === Weather Details === */
 .weather-details {
   display: grid;

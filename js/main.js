@@ -13,6 +13,8 @@ const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 const weatherIcon = document.getElementById('weatherIcon');
 const feelsLike = document.getElementById('feelsLike');
+const timeValue = document.getElementById('timeValue');
+const dateValue = document.getElementById('dateValue');
 
 // === Weather Icon Mapping ===
 const weatherIcons = {
@@ -122,6 +124,15 @@ function displayWeather(data) {
   humidity.textContent = `${data.current.humidity}%`;
   wind.textContent = `${data.current.wind_kph} km/s`;
   feelsLike.textContent = `${Math.round(data.current.feelslike_c)}°C`;
+  
+  // Vaqtni yangilash (localtime: "2024-01-15 14:30")
+  const localtime = data.location.localtime;
+  const [datePart, timePart] = localtime.split(' ');
+  const [year, month, day] = datePart.split('-');
+  const formattedDate = `${day}/${month}/${year}`;
+  
+  timeValue.textContent = timePart;
+  dateValue.textContent = formattedDate;
   
   // Icon yangilash
   const condition = data.current.condition.text;
