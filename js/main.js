@@ -10,7 +10,10 @@ const wind = document.getElementById('wind');
 
 
 searchBtn.addEventListener('click', () => {
+    console.log('Button bosildi');
     const city = cityInput.value.trim();
+    console.log('Kiritilgan shahar:', city);
+
     if (city === '') {
         alert('Please enter a city name.');
         return;
@@ -20,7 +23,8 @@ searchBtn.addEventListener('click', () => {
 
 
 async function getWeather(city) {
-    const apiKey = 'YOUR_API_KEY';  
+    console.log('getWeather ishladi:', city);
+    const apiKey = 'b1504cf0b139a525f6a3a7a454116240';  
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     try {
         const response = await fetch(url);  
@@ -35,11 +39,12 @@ async function getWeather(city) {
 }
 
 function displayWeather(data) {
-  cityName.textContent = data.name;
-  temperature.textContent = `Harorat: ${Math.round(data.main.temp)}°C`;
-  description.textContent = `Holat: ${data.weather[0].description}`;
-  humidity.textContent = `Namlik: ${data.main.humidity}%`;
-  wind.textContent = `Shamol: ${data.wind.speed} km/s`;
+    console.log('displayWeather ishladi', data);
+    cityName.textContent = data.name;
+    temperature.textContent = `Harorat: ${Math.round(data.main.temp)}°C`;
+    description.textContent = `Holat: ${data.weather[0].description}`;
+    humidity.textContent = `Namlik: ${data.main.humidity}%`;
+    wind.textContent = `Shamol: ${data.wind.speed} km/s`;
 };
 
 
